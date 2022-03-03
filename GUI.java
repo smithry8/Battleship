@@ -1,25 +1,18 @@
 package BattleShip;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class GUI{
-	private static int a = 0;
-	
-	public static Icon resizeIcon(ImageIcon icon, int width, int height) {
-		Image originalImage = icon.getImage();
-		Image resizedImage = originalImage.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT);
-		return new ImageIcon(resizedImage);
-	}
+public class GUI extends JButton implements ActionListener{
+	private static int leftBorderCounter = 0;
 	
     public static final void main(String[] args){
         JFrame battleshipFrame = new JFrame("Battleship");
         JPanel emptyButton = new JPanel();
-        ImageIcon smallShip = new ImageIcon("Small ship.png");
         battleshipFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         battleshipFrame.setSize(600,600);
         battleshipFrame.setLayout(new GridLayout(11,11));
@@ -40,13 +33,13 @@ public class GUI{
                 battleshipFrame.add(numberButton);
             }
             else if(i % 11 == 0) {
-                JLabel letterButton = new JLabel(String.valueOf(alphabet[a]), SwingConstants.CENTER);
+                JLabel letterButton = new JLabel(String.valueOf(alphabet[leftBorderCounter]), SwingConstants.CENTER);
                 letterButton.setBackground(new Color(86,125,70));
                 letterButton.setOpaque(true);
                 Border border = BorderFactory.createLineBorder(Color.black, 1);
                 letterButton.setBorder(border);
                 battleshipFrame.add(letterButton);
-                a = a + 1;
+                leftBorderCounter = leftBorderCounter + 1;
             }
             else {
                 JButton shipButton = new JButton();
@@ -59,4 +52,10 @@ public class GUI{
 
 //		JPanel battleshipPanel = new JPanel();
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

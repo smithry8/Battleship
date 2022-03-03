@@ -1,3 +1,4 @@
+package BattleShip;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -51,7 +52,12 @@ public class GameBoardTerminal {
 		char shipLetter;
 		for (int n = 0; n < 5; n++) {
 			System.out.println("Please enter your ship coordinates separated by a space. Ex: A 1");
+			System.out.println("From letter 'A' to 'J' and Number from '1' to '9'");
 			String input = scan.nextLine();
+			if(input.isEmpty() || input.length() != 3 || !Character.isWhitespace(input.charAt(1))) {
+				System.out.println("Can't Place Ship Please Choose Again");
+			}
+			else {
 			input = input.toUpperCase();
 			char coords_input = input.charAt(0);
 			char col_input = input.charAt(2);
@@ -70,6 +76,7 @@ public class GameBoardTerminal {
 				playerField.placeShip(length, shipLetter, orientation, rowValue, colValue);
 			}
 			System.out.println(playerField.lowerToString());
+			}
 		}
 	}
 
