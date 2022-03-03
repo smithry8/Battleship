@@ -1,14 +1,49 @@
+
 public class Board {
 
+	/**
+	 * sets the boardSize to 10
+	 */
 	private int boardSize = 10;
+	
+	/**
+	 * creates a 2D array called upper_map
+	 */
 	char[][] upper_map = new char[boardSize][boardSize];
+	
+	/**
+	 * creates a 2D array called lower_map
+	 */
 	char[][] lower_map = new char[boardSize][boardSize];
+	
+	/**
+	 * sets carrier_ship to 5
+	 */
 	int carrier_ship = 5;
+	
+	/**
+	 * sets battleship_ship to 4
+	 */
 	int battleship_ship = 4;
+	
+	/**
+	 * sets destroyer_ship to 3
+	 */
 	int destroyer_ship = 3;
+	
+	/**
+	 * sets submarine_ship to 3
+	 */
 	int submarine_ship = 3;
-	int patrol_ship = 2;
-
+	
+	/**
+	 * does not allow suspend
+	 */
+	int cruiser_ship = 2;
+	
+	/*****************************************************************
+	 Default constructor that creates the game board.
+	 *****************************************************************/
 	public void BOARD() {
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
@@ -18,6 +53,10 @@ public class Board {
 		}
 	}
 
+	/*****************************************************************
+	 This is the toString for the upper board.
+	 @return s the char that goes on the board
+	 *****************************************************************/
 	public String upperToString() {
 		String s = "";
 		s = s + " ";
@@ -35,6 +74,10 @@ public class Board {
 		return s;
 	}
 
+	/*****************************************************************
+	 This is the toString for the lower board.
+	 @return s the char that goes on the board
+	 *****************************************************************/
 	public String lowerToString() {
 		String s = "";
 		s = s + " ";
@@ -52,8 +95,13 @@ public class Board {
 		return s;
 	}
 
+	/*****************************************************************
+	 Determines if the ship has been sunk or not by checking if the 
+	 ship is equal to zero.
+	 @return the boolean for if the ship has been sunk or not
+	 *****************************************************************/
 	public boolean shootAt(int row, int col) {
-		if (lower_map[row][col] == 'c') {
+		if (lower_map[row][col] == 'C') {
 			carrier_ship--;
 			if (carrier_ship == 0) {
 				System.out.println("Enemy Carrier has been sunk!");
@@ -82,9 +130,9 @@ public class Board {
 			}
 			return true;
 		} else if (lower_map[row][col] == 'p') {
-			patrol_ship--;
-			if (patrol_ship == 0) {
-				System.out.println("Enemy Patrol Boat has been sunk!");
+			cruiser_ship--;
+			if (cruiser_ship == 0) {
+				System.out.println("Enemy Cruiser has been sunk!");
 				return true;
 			}
 			return true;
@@ -93,23 +141,38 @@ public class Board {
 		}
 	}
 
+	/*****************************************************************
+	 Marks a hit on the board
+	 *****************************************************************/
 	public void recordHit(int row, int col) {
 		this.upper_map[row][col] = 'x';
 	}
 
+	/*****************************************************************
+	 Marks a miss on the board
+	 *****************************************************************/
 	public void recordMiss(int row, int col) {
 		this.upper_map[row][col] = 'o';
 	}
-
+	
+	/*****************************************************************
+	 Determines if the player or the computer has any ships left
+	 @return the boolean if there are ships left or not
+	 *****************************************************************/
 	public boolean hasNoShips() {
 		if (carrier_ship == 0 && battleship_ship == 0 && destroyer_ship == 0 && submarine_ship == 0
-				&& patrol_ship == 0) {
+				&& cruiser_ship == 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
+	/*****************************************************************
+	 Determines if the ship can fit on the board in the location that
+	 was selected
+	 @return result if the ship can fit or not
+	 *****************************************************************/
 	public boolean canShipFit(int length, char orientation, int row, int col) {
 		boolean result = true;
 		if (orientation == 'H') {
@@ -139,6 +202,9 @@ public class Board {
 		return result;
 	}
 
+	/*****************************************************************
+	 Places the ship on the board
+	 *****************************************************************/
 	public void placeShip(int length, char shipLetter, char orientation, int row, int col) {
 		if (canShipFit(length, orientation, row, col) == true) {
 			if (orientation == 'V') {

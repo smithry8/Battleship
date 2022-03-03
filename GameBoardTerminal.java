@@ -1,17 +1,50 @@
-package BattleShip;
-
+/*****************************************************************
+ Battleship
+ @author Jake Umlor
+ @author Thanh Nguyen
+ @author Ryan Smith
+ @version Winter 2022
+ *****************************************************************/
 import java.util.Scanner;
 import java.util.Random;
 
 public class GameBoardTerminal {
 
+	/**
+	 * makes new Scanner called scan 
+	 */
 	Scanner scan = new Scanner(System.in);
+	
+	/**
+	 * value for the letter in the coordinates
+	 */
 	private char coords_input;
+	
+	/**
+	 * players board
+	 */
 	private Board playerField = new Board();
+	
+	/**
+	 * computers board
+	 */
 	private Board computerField = new Board();
+	
+	/**
+	 * boolean for if the games over
+	 */
 	boolean gameOver = false;
+	
+	/**
+	 * makes new Random object called random
+	 */
 	Random random = new Random();
-
+	
+	/*****************************************************************
+	 Gets the length of the ship.
+	 @param n the ship to get the length of 
+	 @return the length of the given ship
+	 *****************************************************************/
 	public int getShipLength(int n) {
 		if (n == 0) {
 			return 5;
@@ -27,10 +60,15 @@ public class GameBoardTerminal {
 		return n;
 	}
 
+	/*****************************************************************
+	 Gets the character of the ship.
+	 @param n the ship to get the character of 
+	 @return the character for the given ship
+	 *****************************************************************/
 	public char getShipChar(int n) {
 		if (n == 0) {
 			System.out.println("Placing Carrier.");
-			return 'c';
+			return 'C';
 		} else if (n == 1) {
 			System.out.println("Placing Battleship.");
 			return 'b';
@@ -41,23 +79,24 @@ public class GameBoardTerminal {
 			System.out.println("Placing Submarine.");
 			return 's';
 		} else if (n == 4) {
-			System.out.println("Placing Patrol Boat.");
-			return 'p';
+			System.out.println("Placing Cruiser.");
+			return 'c';
 		}
 		return 'n';
 	}
 
+	/*****************************************************************
+	 Places the ship on the grid for the player.
+	 *****************************************************************/
 	public void placePlayerShip() {
 		int length;
 		char shipLetter;
 		for (int n = 0; n < 5; n++) {
 			System.out.println("Please enter your ship coordinates separated by a space. Ex: A 1");
-			System.out.println("From letter 'A' to 'J' and Number from '1' to '9'");
 			String input = scan.nextLine();
 			if(input.isEmpty() || input.length() != 3 || !Character.isWhitespace(input.charAt(1))) {
 				System.out.println("Can't Place Ship Please Choose Again");
 			}
-			else {
 			input = input.toUpperCase();
 			char coords_input = input.charAt(0);
 			char col_input = input.charAt(2);
@@ -76,10 +115,12 @@ public class GameBoardTerminal {
 				playerField.placeShip(length, shipLetter, orientation, rowValue, colValue);
 			}
 			System.out.println(playerField.lowerToString());
-			}
 		}
 	}
 
+	/*****************************************************************
+	 Places the ship on the grid for the computer.
+	 *****************************************************************/
 	public void placeComputerShip() {
 		int length;
 		char shipLetter;
@@ -116,6 +157,10 @@ public class GameBoardTerminal {
 		}
 	}
 
+	/*****************************************************************
+	 Sets up the board after the player and computer have placed their
+	 ships. 
+	 *****************************************************************/
 	public void setup() {
 		Board computer = computerField;
 		computer.BOARD();
@@ -127,7 +172,11 @@ public class GameBoardTerminal {
 		placePlayerShip();
 		System.out.println("Player is ready!");
 	}
-
+	
+	/*****************************************************************
+	 Determines if the game is over based on if the player or the 
+	 computer have any remaining ships
+	 *****************************************************************/
 	public boolean gameOver() {
 		if (coords_input == 'Q') {
 			gameOver = true;
@@ -162,6 +211,10 @@ public class GameBoardTerminal {
 		}
 	}
 
+	/*****************************************************************
+	 This is the flow of the game, player plays and then the computer
+	 plays. It will also check to make sure the the game isn't over.
+	 *****************************************************************/
 	public void play() {
 		if (gameOver == false) {
 			playerTurn();
@@ -170,6 +223,10 @@ public class GameBoardTerminal {
 		}
 	}
 
+	/*****************************************************************
+	 Players turn gives prompt to enter coordinates, then determines
+	 if its a hit or a miss.
+	 *****************************************************************/
 	public void playerTurn() {
 		System.out.println(playerField.upperToString());
 		System.out.println("Please enter your coordinates seperated by a space. Ex: A 1");
@@ -199,6 +256,10 @@ public class GameBoardTerminal {
 		}
 	}
 
+	/*****************************************************************
+	 Computer turn gives prompt to enter coordinates, then determines
+	 if its a hit or a miss.
+	 *****************************************************************/
 	public void computerTurn() {
 		int upper_row_rand = random.nextInt(10);
 		int upper_col_rand = random.nextInt(10);
@@ -209,8 +270,9 @@ public class GameBoardTerminal {
 		}
 	}
 
-	// === STATIC STUFF
-	// ============================================================================================
+	/*****************************************************************
+	 The general method that will allow the game to function and run.
+	 *****************************************************************/
 	public static void main(String[] args) {
 		GameBoardTerminal game = new GameBoardTerminal();
 		game.setup();
