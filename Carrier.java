@@ -1,9 +1,9 @@
-/*****************************************************************
-Creates the Carrier ship 
-*****************************************************************/
-public class Carrier extends Ship {
-	public Carrier(boolean vertical) {
-		super(5, 'C', vertical);
-		this.setName("Carrier");
-	}
+public class Carrier extends Ship{
+    private final static String name = "Carrier";
+    private final static int length = 5;
+    private final static char identifier = 'C';
+
+    Carrier(){
+        super(name, length, identifier);
+    }
 }

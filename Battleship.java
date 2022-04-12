@@ -1,9 +1,9 @@
-/*****************************************************************
-Creates the Battleship 
-*****************************************************************/
-public class Battleship extends Ship {
-	public Battleship(boolean vertical) {
-		super(4, 'b', vertical);
-		this.setName("Battleship");
-	}
+public class Battleship extends Ship{
+    private final static String name = "Battleship";
+    private final static int length = 4;
+    private final static char identifier = 'B';
+
+    public Battleship(){
+        super(name, length, identifier);
+    }
 }

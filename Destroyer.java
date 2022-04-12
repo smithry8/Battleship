@@ -1,9 +1,9 @@
-/*****************************************************************
-Creates the Destroyer 
-*****************************************************************/
 public class Destroyer extends Ship{
-	public Destroyer(boolean vertical) {
-		super(3, 'd', vertical);
-		this.setName("Destroyer");
-	}
+    private final static String name = "Destoryer";
+    private final static int length = 3;
+    private final static char identifier = 'D';
+
+    public Destroyer(){
+        super(name, length, identifier);
+    }
 }
