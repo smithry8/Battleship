@@ -1,3 +1,6 @@
+/*****************************************************************
+Creates the Submarine 
+*****************************************************************/
 public class Submarine extends Ship{
     private final static String name = "Submarine";
     private final static int length = 3;

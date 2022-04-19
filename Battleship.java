@@ -1,3 +1,6 @@
+/*****************************************************************
+Creates the Battleship 
+*****************************************************************/
 public class Battleship extends Ship{
     private final static String name = "Battleship";
     private final static int length = 4;
