@@ -1,5 +1,5 @@
 /*****************************************************************
-Creates the Cruiser 
+Creates the Patrol Boat 
 *****************************************************************/
 public class PatrolBoat extends Ship{
     private final static String name = "Patrol Boat";
