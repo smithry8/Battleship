@@ -79,54 +79,85 @@ public class GameBoard implements ShipMethod{
 
    /*****************************************************************
 	Create a Carrier Object
+	*****************************************************************/
+   public void createCarrier(Carrier carrier){
+	   //carrier name, size, and identifier
+	   this.carrier = carrier;
+   }
+
+   /*****************************************************************
+	Return a Carrier Object
 	@return Carrier Object
 	*****************************************************************/
-   public Carrier createCarrier(){
-	   //carrier name, size, and identifier
-	   Carrier carrier = new Carrier();
-	   return carrier;
+   public Carrier returnCarrier(){
+	   return this.carrier;
    }
 	 
    /*****************************************************************
 	Create a Battleship Object
+	*****************************************************************/
+   public void createBattleship(Battleship battleship){
+	   //battleship name, size, and identifier
+	   this.battleship = battleship;
+   }
+
+   /*****************************************************************
+	Return a Battleship Object
 	@return Battleship Object
 	*****************************************************************/
-   public Battleship createBattleship(){
-	   //battleship name, size, and identifier
-	   Battleship battleship = new Battleship();
-	   return battleship;
-   }
+	public Battleship returnBattleship(){
+		return this.battleship;
+	}
 	 
    /*****************************************************************
 	Create a Destroyer Object
-	@return Destroyer Object
 	*****************************************************************/
-   public Destroyer createDestroyer(){
+   public void createDestroyer(Destroyer destroyer){
 	   //destroyer name, size, and identifier
-	   Destroyer destroyer = new Destroyer();
-	   return destroyer;
+	   this.destoryer = destroyer;
    }
 	   
-   /*****************************************************************
+	/*****************************************************************
+	Return a Destroyer Object
+	@return Destroyer Object
+	*****************************************************************/
+	public Destroyer returnDestroyer(){
+		return this.destoryer;
+	}
+
+    /*****************************************************************
 	Create a Submarine Object
+	*****************************************************************/
+	 public void createSubmarine(Submarine submarine){  
+	   //submarine name, size, and identifier
+	   this.submarine = submarine;
+	 }
+
+	/*****************************************************************
+	Return a Submarine Object
 	@return Submarine Object
 	*****************************************************************/
-	 public Submarine createSubmarine(){  
-	   //submarine name, size, and identifier
-	   Submarine submarine = new Submarine();
-	   return submarine;
-	 }
+	public Submarine returnSubmarine(){
+		return this.submarine;
+	}
 
 	/*****************************************************************
 	Create a PatrolBoat Object
 	@return PatrolBoat Object
 	*****************************************************************/
-   public PatrolBoat createPatrolBoat(){
+   public void createPatrolBoat(PatrolBoat patrolBoat){
 	   //patrol boat name, size, and identifier
-	   PatrolBoat patrolBoat = new PatrolBoat();
-	   return patrolBoat;
-
+		this.patrolBoat = patrolBoat;
    }
+
+   /*****************************************************************
+	Return a patrolBoat Object
+	@return patrolBoat Object
+	*****************************************************************/
+	public PatrolBoat returnpatrolBoat(){
+		return this.patrolBoat;
+	}
+   
 
    /*****************************************************************
 	This is the toString for the upper board.
