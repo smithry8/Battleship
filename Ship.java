@@ -1,4 +1,3 @@
-
 public abstract class Ship {
 	/**
 	 * value for the name of the ship
@@ -71,7 +70,7 @@ public abstract class Ship {
 	/*****************************************************************
 	 Sets the length of the ship
 	 *****************************************************************/
-	private void setLength(int length) {
+	public void setLength(int length) {
 		this.length = length;
 	}
 	
